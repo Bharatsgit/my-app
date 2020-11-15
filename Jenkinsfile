@@ -1,7 +1,7 @@
 node{
 stage('SCM Checkout')
 	{
-		git 'https://github.com/javahometech/my-app.git'
+		git 'https://github.com/Bharatsgit/my-app.git'
 	}
 	stage('Compile-Package)
 	  {
