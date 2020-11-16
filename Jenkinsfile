@@ -19,9 +19,11 @@ Bharat''', cc: '', from: '', replyTo: '', subject: 'Jenkins Job', to: 'bbspython
 	stage('Slack Notifications')
 	{
 		slackSend baseUrl: 'https://hooks.slack.com/services/', 
-			channel: '#jenkins-pipeline-demo', color: 'good', 
-			message: 'Welcome to Jenkins . Slack !', 
-			username: 'bharatjenkins'	
+			channel: '#jenkins-pipeline-demo', 
+			color: 'good', 
+			message: 'Welcome to jenkins ... Slack ! From Bharat. ..', 
+			tokenCredentialId: 'slack-demo', 
+			username: 'bharatjen'
 	}
 	
     }
