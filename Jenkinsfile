@@ -2,7 +2,7 @@ node
 {
 	stage('SCM Checkout')
 	{
-	  git 'tool name: 'mvn-33', type: 'maven'
+	  git 'https://github.com/Bharatsgit/my-app'
 	}
 	stage('Compile-Package')
 	{
