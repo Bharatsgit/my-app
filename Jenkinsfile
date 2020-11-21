@@ -1,5 +1,5 @@
 node{
-	stages('SCM Checkout')
+	stage('SCM Checkout')
 	{
 		git 'https://github.com/javahometech/my-app.git'
 	}
