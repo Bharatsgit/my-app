@@ -6,7 +6,7 @@ node{
 	stage('compile-package')
 	      {
 		 def mvnHome = tool name: 'mvn3', type: 'maven'
-		      sh '${mvnHome}/bin/mvn clean package'
+		      sh '${mvnHome}/bin/mvn package'
 	      }
 	      
 }
