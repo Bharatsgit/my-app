@@ -1,17 +1,14 @@
-node{
+node
+{
 	stage('SCM Checkout')
 	{
-		git 'https://github.com/Bharatsgit/my-app'
+	  git 'tool name: 'mvn-33', type: 'maven'
 	}
-	stage('compile-package')
-	      {
-		 def mvnHome = tool name: 'mvn3', type: 'maven'
-		 sh "${mvnHome}/bin/mvn package"
-	      }
-	stage('Email Notifications')
+	stage('Compile-Package')
 	{
-	mail bcc: '', body: '''Hi from Jenkins Alerts. 11-21
-	Thanks
-	Bharat''', cc: '', from: '', replyTo: '', subject: 'Jenkins Job Completion', to: 'bbspython@gmail.com'
+	 mvnHome = tool name: 'mvn-33', type: 'maven'
+		sh "${mvnHome}/bin/mvn package"
+		
 	}
+	
 }
