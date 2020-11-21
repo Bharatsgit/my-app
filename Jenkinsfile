@@ -10,6 +10,13 @@ node
 		sh "${mvnHome}/bin/mvn package"
 		
 	}
+	   stage('SonarQube Analysis') {
+        def mvnHome =  tool name: 'mvn-33', type: 'maven'
+        withSonarQubeEnv('sonar-7') { 
+          sh "${mvnHome}/bin/mvn sonar:sonar"
+        }
+    }
+   
 	stage('Email Notification')
 	{
 		mail bcc: '', body: '''Hi,
