@@ -20,7 +20,7 @@ node
 	}
 	stage('Slack Notifications')
 	{
-		slackSend channel: '#jenkins-pipeline-11-21-2020', color: 'good', message: 'TestTestTestTestTest - Bharat', tokenCredentialId: 'slack_demo_11_21', username: 'bharatuser'
+	slackSend channel: '#jenkins-pipeline-11-21-2020', color: 'good', message: 'TestTestTestTestTest - Bharat', tokenCredentialId: 'slack1121-2', username: 'test slack'
 	}
 	
 }
