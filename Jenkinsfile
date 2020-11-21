@@ -1,31 +1,11 @@
 node{
-stage('SCM Checkout')
+	stages('SCM Checkout')
 	{
-		git 'https://github.com/Bharatsgit/my-app.git'
+		git 'https://github.com/javahometech/my-app.git'
 	}
-	stage('Compile-Package')
-	  {
-	  	def mvnHome = tool name: 'mvn2', type: 'maven'
-		  sh "${mvnHome}/bin/mvn package"
-	  }	
-	stage('Email Notifications')
-	{
-		mail bcc: '', body: '''Hi ,
-This is email alerts.
-
-Thanks,
-Bharat''', cc: '', from: '', replyTo: '', subject: 'Jenkins Job', to: 'bbspython@gmail.com'
-	}
-	stage('Slack Notifications')
-	{
-		slackSend baseUrl: 'https://hooks.slack.com/services/', 
-			channel: '#jenkins-pipeline-demo', 
-			color: 'good', 
-			message: 'Welcome to jenkins ... Slack ! From Bharat. ..', 
-			tokenCredentialId: 'slack-demo', 
-			username: 'bharatjen'
-	}
-	
-    }
-
-	
+	stage('compile-package)
+	      {
+		 sh 'mvn clean package'
+	      }
+	      
+}
