@@ -18,5 +18,9 @@ node
 		Thanks,
 	Bharat Singh''', cc: '', from: '', replyTo: '', subject: 'bharat python 11-22-2020', to: 'bbspython@gmail.com'
 	}
+	stage('Slack Notifications')
+	{
+		slackSend baseUrl: 'https://hooks.slack.com/services/', channel: '#jenkins-pipeline-11-21-2020', color: 'good', message: 'This is jenkins from bharat 11-21-2020, Thanks Bharat...to slack', tokenCredentialId: 'slack_demo_11_21'
+	}
 	
 }
