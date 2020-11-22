@@ -6,12 +6,12 @@ node
 	}
 	stage('Compile-Package')
 	{
-	 mvnHome = tool name: 'mvn-33', type: 'maven'
+	 mvnHome = tool name: 'mvn-sonar', type: 'maven'
 		sh "${mvnHome}/bin/mvn package"
 		
 	}
 	   stage('SonarQube Analysis') {
-        def mvnHome =  tool name: 'mvn-33', type: 'maven'
+        def mvnHome =  tool name: 'mvn-sonar', type: 'maven'
         withSonarQubeEnv('sonar-7') { 
           sh "${mvnHome}/bin/mvn sonar:sonar"
         }
