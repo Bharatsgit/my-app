@@ -15,4 +15,12 @@ node{
 			subject: 'FROM JENKINS on 12_2_2020', 
 			to: 'bbspython@gmail.com'
 	}
+	stage('SlackDemo')
+	{
+		slackSend baseUrl: 'https://hooks.slack.com/services/', 
+			channel: '#jenkins_12_2_2020', 
+			color: 'good', message: 'this is Jenkins from 12_2_2020', 
+			tokenCredentialId: 'slack_12_2', 
+			username: 'slack_12_2un'
+	}
 }
