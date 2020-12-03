@@ -40,7 +40,7 @@ node{
 			channel: '#jenkins_12_2_2020', 
                    color: 'danger', 
                    message: 'SonarQube Analysis Failed', 
-			username: 'slack_12_2un'
+			username: 'slack_12_2un',
 			tokenCredentialId: 'slack_12_2'
                   error "Pipeline aborted due to quality gate failure: ${qg.status}"
               }
