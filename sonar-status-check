@@ -1,47 +1,35 @@
 node{
-   stage('SCM Checkout'){
-     git 'https://github.com/javahometech/my-app'
-   }
-   stage('Compile-Package'){
-      // Get maven home path
-      def mvnHome =  tool name: 'maven-3', type: 'maven'   
-      sh "${mvnHome}/bin/mvn package"
-   }
-   
-   stage('SonarQube Analysis') {
-        def mvnHome =  tool name: 'maven-3', type: 'maven'
-        withSonarQubeEnv('sonar-6') { 
-          sh "${mvnHome}/bin/mvn sonar:sonar"
-        }
-    }
-    
-    stage("Quality Gate Statuc Check"){
-          timeout(time: 1, unit: 'HOURS') {
-              def qg = waitForQualityGate()
-              if (qg.status != 'OK') {
-                   slackSend baseUrl: 'https://hooks.slack.com/services/',
-                   channel: '#jenkins-pipeline-demo',
-                   color: 'danger', 
-                   message: 'SonarQube Analysis Failed', 
-                   teamDomain: 'javahomecloud',
-                   tokenCredentialId: 'slack-demo'
-                  error "Pipeline aborted due to quality gate failure: ${qg.status}"
-              }
-          }
-      }    
-   
-   stage('Email Notification'){
-      mail bcc: '', body: '''Hi Welcome to jenkins email alerts
-      Thanks
-      Hari''', cc: '', from: '', replyTo: '', subject: 'Jenkins Job', to: 'hari.kammana@gmail.com'
-   }
-   stage('Slack Notification'){
-       slackSend baseUrl: 'https://hooks.slack.com/services/',
-       channel: '#jenkins-pipeline-demo',
-       color: 'good', 
-       message: 'Welcome to Jenkins, Slack!', 
-       teamDomain: 'javahomecloud',
-       tokenCredentialId: 'slack-demo'
-   }
-
+	stage('SCM CHECKOUT')
+	{
+		git 'https://github.com/Bharatsgit/my-app.git'
+	}
+	stage('Compile-Package')
+	{
+	def mvnHome = tool name: 'maven_12-2', type: 'maven'
+		sh "${mvnHome}/bin/mvn package"
+	}
+	stage('Email Notifications')
+	{
+		mail bcc: '', body: 'this is year 2020 from Jenkins pipeline 12.2.2020', 
+			cc: '', from: '', replyTo: '', 
+			subject: 'FROM JENKINS on 12_2_2020', 
+			to: 'bbspython@gmail.com'
+	}
+	stage('SlackDemo')
+	{
+		slackSend baseUrl: 'https://hooks.slack.com/services/', 
+			channel: '#jenkins_12_2_2020', 
+			color: 'good', message: 'this is Jenkins from 12_2_2020', 
+			tokenCredentialId: 'slack_12_2', 
+			username: 'slack_12_2un'
+	}
+	   stage('SonarQube Analysis') 
+	{
+		def mvnHome = tool name: 'maven_12-2', type: 'maven'
+        	withSonarQubeEnv('sonar-6new') 
+		{ 
+          	sh "${mvnHome}/bin/mvn sonar:sonar"
+        	}
+    	}
+	 
 }
