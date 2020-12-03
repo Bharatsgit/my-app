@@ -23,4 +23,10 @@ node{
 			tokenCredentialId: 'slack_12_2', 
 			username: 'slack_12_2un'
 	}
+	   stage('SonarQube Analysis') {
+		def mvnHome = tool name: 'maven_12-2', type: 'maven'
+        	withSonarQubeEnv('sonar-6') { 
+          sh "${mvnHome}/bin/mvn sonar:sonar"
+        }
+    }
 }
