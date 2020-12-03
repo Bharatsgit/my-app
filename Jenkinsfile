@@ -31,7 +31,7 @@ node{
           	sh "${mvnHome}/bin/mvn sonar:sonar"
         	}
     	}
-	  stage("Quality Gate status check")
+	  stage('Quality Gate status check')
 	{
           timeout(time: 1, unit: 'HOURS') 
 		  {
